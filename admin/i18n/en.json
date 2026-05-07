@@ -1,0 +1,78 @@
+{
+  "tab_connection": "Connection",
+  "tab_grid": "Grid meter",
+  "tab_controller": "Controller",
+  "tab_safety": "Safety",
+  "tab_advanced": "Advanced",
+
+  "header_connection": "BK215 connection",
+  "header_discovery": "Device discovery",
+  "header_timeouts": "Timeouts",
+  "header_grid": "Grid meter state",
+  "header_controller": "Zero feed-in controller",
+  "header_gains": "Controller gains",
+  "header_safety": "Safety limits",
+  "header_aps": "APsystems inverter (optional)",
+  "header_cloud": "Cloud backup token (optional)",
+  "header_logging": "Logging",
+
+  "label_bk215Host": "BK215 IP address",
+  "help_bk215Host": "IPv4 address of the storage device on the local network. Leave empty when using mDNS discovery.",
+  "label_bk215Port": "TCP port",
+  "label_bk215Serial": "Serial number (optional)",
+  "help_bk215Serial": "Used for identification in multi-device setups. Can be left blank.",
+
+  "label_enableMdnsDiscovery": "Enable mDNS discovery",
+  "help_enableMdnsDiscovery": "Automatically locates BK215 devices on the LAN. Recommended.",
+
+  "label_bk215ConnectTimeoutMs": "Connect timeout (ms)",
+  "label_bk215ResponseTimeoutMs": "ACK timeout (ms)",
+  "label_bk215IdleTimeoutMs": "Idle watchdog (ms)",
+  "help_bk215IdleTimeoutMs": "Forces a reconnect attempt if no data has been received from the BK215 for this duration.",
+
+  "intro_grid": "Select the ioBroker state that holds the net active power at the house connection (positive = import, negative = export). Typical: shelly.0.Shelly3EM-XXXXXX.Total.act_power",
+  "label_gridStatePath": "State for grid power",
+  "help_gridStatePath": "Full path of the state that provides grid power in watts.",
+  "label_gridStaleTimeoutS": "Maximum data age (s)",
+  "help_gridStaleTimeoutS": "If exceeded, the controller drops to the safe state (0 W).",
+
+  "intro_controller": "Position-form PI controller for zero feed-in. A 3–5 second tick interval has proven stable in practice.",
+  "label_controllerEnabled": "Enable controller",
+  "help_controllerEnabled": "Auto-start when the adapter loads. Can be toggled at runtime via controller.enabled.",
+  "label_controllerTargetGridW": "Target grid power (W)",
+  "help_controllerTargetGridW": "0 W = strict zero feed-in. Positive = allow some import. Negative = allow active export.",
+  "label_controllerIntervalMs": "Tick interval (ms)",
+  "help_controllerIntervalMs": "On each tick a setpoint is computed and, if needed, sent to the BK215.",
+  "label_controllerDeadbandW": "Deadband (W)",
+  "help_controllerDeadbandW": "Errors within this band are treated as zero. Saves hardware wear under measurement noise.",
+
+  "label_controllerKp": "Kp (proportional gain)",
+  "help_controllerKp": "Typical range 0.5–0.9. Higher = more aggressive, may oscillate.",
+  "label_controllerKi": "Ki (integral gain)",
+  "help_controllerKi": "Typical range 0.02–0.1. Higher = faster zero-error tracking, may overshoot.",
+  "label_inverterMaxPowerW": "Inverter max power (W)",
+  "help_inverterMaxPowerW": "Hard cap on the controller output. 800 W is typical for German balcony installations.",
+
+  "intro_safety": "These values prevent the storage from reaching BMS limits. They are applied on top of the device-internal limits.",
+  "label_socMin": "Minimum SoC (%)",
+  "help_socMin": "Discharge stops below this SoC.",
+  "label_socMax": "Maximum SoC (%)",
+  "help_socMax": "Charge stops above this SoC.",
+  "label_socSafetyBuffer": "SoC buffer (percentage points)",
+  "help_socSafetyBuffer": "Extra margin above the SoC floor to absorb measurement noise.",
+
+  "intro_aps": "Optional integration of an APsystems EZ1 inverter for direct PV telemetry (PV power, AC output). Improves controller accuracy.",
+  "label_enableApsInverter": "Integrate APsystems inverter",
+  "label_apsInverterHost": "Inverter IP address",
+
+  "intro_cloud": "Optional: API token for the Sunlit cloud, if cloud telemetry should serve as a backup. Stored encrypted.",
+  "label_cloudApiToken": "Cloud API token",
+  "help_cloudApiToken": "Stored encrypted (encryptedNative).",
+
+  "label_logLevel": "Log level",
+  "log_silly": "silly (everything)",
+  "log_debug": "debug",
+  "log_info": "info (recommended)",
+  "log_warn": "warn",
+  "log_error": "error (errors only)"
+}

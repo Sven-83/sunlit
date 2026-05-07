@@ -1,0 +1,78 @@
+{
+  "tab_connection": "Verbindung",
+  "tab_grid": "Netzzähler",
+  "tab_controller": "Regler",
+  "tab_safety": "Sicherheit",
+  "tab_advanced": "Erweitert",
+
+  "header_connection": "BK215-Verbindung",
+  "header_discovery": "Geräteerkennung",
+  "header_timeouts": "Zeitlimits",
+  "header_grid": "Netzzähler-Datenpunkt",
+  "header_controller": "Nulleinspeisungs-Regler",
+  "header_gains": "Reglerverstärkung",
+  "header_safety": "Sicherheitsgrenzen",
+  "header_aps": "APsystems-Inverter (optional)",
+  "header_cloud": "Cloud-Backup-Token (optional)",
+  "header_logging": "Logging",
+
+  "label_bk215Host": "IP-Adresse des BK215",
+  "help_bk215Host": "IPv4-Adresse des Speichers im lokalen Netz. Wird leer gelassen, wenn die Geräteerkennung verwendet wird.",
+  "label_bk215Port": "TCP-Port",
+  "label_bk215Serial": "Seriennummer (optional)",
+  "help_bk215Serial": "Wird zur Identifikation in Mehr-Geräte-Setups genutzt. Kann leer bleiben.",
+
+  "label_enableMdnsDiscovery": "mDNS-Geräteerkennung aktivieren",
+  "help_enableMdnsDiscovery": "Sucht automatisch nach BK215-Geräten im LAN. Empfohlen.",
+
+  "label_bk215ConnectTimeoutMs": "Verbindungs-Timeout (ms)",
+  "label_bk215ResponseTimeoutMs": "ACK-Timeout (ms)",
+  "label_bk215IdleTimeoutMs": "Idle-Watchdog (ms)",
+  "help_bk215IdleTimeoutMs": "Erzwingt eine Reconnect-Versuch, falls der BK215 für die angegebene Dauer keine Daten sendet.",
+
+  "intro_grid": "Wählen Sie den ioBroker-Datenpunkt, der die saldierte Wirkleistung am Hausanschluss liefert (Bezug positiv, Einspeisung negativ). Typisch: shelly.0.Shelly3EM-XXXXXX.Total.act_power",
+  "label_gridStatePath": "Datenpunkt für Netzleistung",
+  "help_gridStatePath": "Vollständiger Pfad zum State, der die Netzleistung in Watt liefert.",
+  "label_gridStaleTimeoutS": "Maximale Datenalter (s)",
+  "help_gridStaleTimeoutS": "Wird das Limit überschritten, geht der Regler in den sicheren Zustand (0 W).",
+
+  "intro_controller": "Inkrementeller PI-Regler für Nulleinspeisung. Ein Tastverhältnis von 3–5 Sekunden hat sich in der Praxis bewährt.",
+  "label_controllerEnabled": "Regler aktivieren",
+  "help_controllerEnabled": "Beim Adapter-Start automatisch starten. Kann jederzeit über controller.enabled umgeschaltet werden.",
+  "label_controllerTargetGridW": "Ziel-Netzleistung (W)",
+  "help_controllerTargetGridW": "0 W = exakte Nulleinspeisung. Positive Werte = leichter Bezug zulassen. Negative Werte = aktive Einspeisung erlauben.",
+  "label_controllerIntervalMs": "Tastverhältnis (ms)",
+  "help_controllerIntervalMs": "Pro Tick wird ein Setpoint berechnet und ggf. an den BK215 gesendet.",
+  "label_controllerDeadbandW": "Totzone (W)",
+  "help_controllerDeadbandW": "Fehler innerhalb dieses Bereichs werden als Null behandelt. Schont die Hardware bei Messrauschen.",
+
+  "label_controllerKp": "Kp (Proportionalverstärkung)",
+  "help_controllerKp": "Typischer Bereich 0.5–0.9. Höher = aggressiver, kann zu Schwingen führen.",
+  "label_controllerKi": "Ki (Integralverstärkung)",
+  "help_controllerKi": "Typischer Bereich 0.02–0.1. Höher = schnellere Annäherung an Null, kann zu Überschwingen führen.",
+  "label_inverterMaxPowerW": "Maximale Wechselrichter-Leistung (W)",
+  "help_inverterMaxPowerW": "Hardware-Begrenzung des Reglerausgangs. In DE typisch 800 W.",
+
+  "intro_safety": "Diese Werte verhindern, dass der Speicher die BMS-Grenzen erreicht. Werte werden ergänzend zu den Geräte-internen Grenzen angewendet.",
+  "label_socMin": "Minimaler SoC (%)",
+  "help_socMin": "Unter diesem SoC wird die Entladung gestoppt.",
+  "label_socMax": "Maximaler SoC (%)",
+  "help_socMax": "Über diesem SoC wird die Ladung gestoppt.",
+  "label_socSafetyBuffer": "SoC-Puffer (%-Punkte)",
+  "help_socSafetyBuffer": "Zusätzlicher Sicherheitsabstand zum Min-SoC, gegen Messtoleranz.",
+
+  "intro_aps": "Optionale Anbindung eines APsystems EZ1 Wechselrichters für direkte PV-Telemetrie (PV-Leistung, AC-Output). Verbessert die Regelqualität.",
+  "label_enableApsInverter": "APsystems-Inverter einbinden",
+  "label_apsInverterHost": "IP-Adresse des Inverters",
+
+  "intro_cloud": "Optional: API-Token für die Sunlit-Cloud, falls Cloud-Telemetrie als Backup gewünscht ist. Wird verschlüsselt gespeichert.",
+  "label_cloudApiToken": "Cloud-API-Token",
+  "help_cloudApiToken": "Verschlüsselt gespeichert (encryptedNative).",
+
+  "label_logLevel": "Log-Level",
+  "log_silly": "silly (alles)",
+  "log_debug": "debug",
+  "log_info": "info (empfohlen)",
+  "log_warn": "warn",
+  "log_error": "error (nur Fehler)"
+}

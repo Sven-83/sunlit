@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#0f1e30"/>
+    </linearGradient>
+    <linearGradient id="charge" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#facc15"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded background -->
+  <rect width="256" height="256" rx="48" fill="url(#bg)"/>
+
+  <!-- Battery body -->
+  <rect x="58" y="80" width="140" height="120" rx="14" fill="none" stroke="#e2e8f0" stroke-width="6"/>
+
+  <!-- Battery terminal -->
+  <rect x="108" y="66" width="40" height="14" rx="4" fill="#e2e8f0"/>
+
+  <!-- Charge level (75% fill, green to yellow gradient = solar storage) -->
+  <rect x="68" y="98" width="120" height="92" rx="6" fill="url(#charge)" opacity="0.85"/>
+
+  <!-- Lightning bolt overlay -->
+  <path d="M 138 100 L 110 150 L 130 150 L 118 196 L 156 138 L 136 138 Z"
+        fill="#ffffff" stroke="#1e3a5f" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- "BK" wordmark below -->
+  <text x="128" y="234" text-anchor="middle"
+        font-family="Helvetica, Arial, sans-serif" font-weight="700"
+        font-size="20" letter-spacing="3" fill="#e2e8f0">BK215</text>
+</svg>

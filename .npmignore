@@ -1,0 +1,25 @@
+.github/
+.idea/
+.vscode/
+src/
+test/
+node_modules/
+
+# Tooling configs that shouldn't ship
+.gitignore
+.eslintrc*
+eslint.config.*
+.prettierrc*
+prettier.config.*
+tsconfig*.json
+
+# Test artifacts
+coverage/
+.nyc_output/
+.iobroker-data/
+
+# Dev artifacts
+*.log
+*.tgz
+.DS_Store
+Thumbs.db

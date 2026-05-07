@@ -1,0 +1,421 @@
+{
+  "common": {
+    "name": "bk215",
+    "version": "0.0.1",
+    "news": {
+      "0.0.1": {
+        "en": "Initial scaffolding",
+        "de": "Initiales Grundgerüst"
+      }
+    },
+    "title": "BK215 Battery Storage",
+    "titleLang": {
+      "en": "BK215 Battery Storage",
+      "de": "BK215 Speichersystem",
+      "ru": "Система хранения BK215",
+      "pt": "Armazenamento BK215",
+      "nl": "BK215 Opslagsysteem",
+      "fr": "Stockage BK215",
+      "it": "Sistema di accumulo BK215",
+      "es": "Almacenamiento BK215",
+      "pl": "System magazynowania BK215",
+      "uk": "Система зберігання BK215",
+      "zh-cn": "BK215 储能系统"
+    },
+    "desc": {
+      "en": "Local-first integration of Sunlit / SunEnergyXT BK215 battery storage with PI-based zero-feed-in control via Shelly Pro 3EM",
+      "de": "Lokale Anbindung des Sunlit / SunEnergyXT BK215 Speichersystems mit PI-basierter Nulleinspeisung über Shelly Pro 3EM",
+      "ru": "Локальная интеграция накопителя Sunlit / SunEnergyXT BK215 с ПИ-регулятором нулевой подачи через Shelly Pro 3EM",
+      "pt": "Integração local do armazenamento Sunlit / SunEnergyXT BK215 com regulador PI de injeção zero via Shelly Pro 3EM",
+      "nl": "Lokale integratie van Sunlit / SunEnergyXT BK215 batterijopslag met PI-gebaseerde nulteruglevering via Shelly Pro 3EM",
+      "fr": "Intégration locale du stockage Sunlit / SunEnergyXT BK215 avec régulateur PI d'injection zéro via Shelly Pro 3EM",
+      "it": "Integrazione locale dell'accumulo Sunlit / SunEnergyXT BK215 con regolatore PI di immissione zero tramite Shelly Pro 3EM",
+      "es": "Integración local del almacenamiento Sunlit / SunEnergyXT BK215 con regulador PI de inyección cero vía Shelly Pro 3EM",
+      "pl": "Lokalna integracja magazynu Sunlit / SunEnergyXT BK215 z regulatorem PI zerowego oddawania przez Shelly Pro 3EM",
+      "uk": "Локальна інтеграція накопичувача Sunlit / SunEnergyXT BK215 з ПІ-регулятором нульової подачі через Shelly Pro 3EM",
+      "zh-cn": "通过 Shelly Pro 3EM 集成 Sunlit / SunEnergyXT BK215 电池存储和基于 PI 的零回馈控制"
+    },
+    "authors": [
+      "Sven-83 <svmorgen@gmx.de>"
+    ],
+    "keywords": [
+      "BK215",
+      "Sunlit",
+      "SunEnergyXT",
+      "Balkonkraftwerk",
+      "Nulleinspeisung",
+      "energy"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "main": "build/main.js",
+    "icon": "bk215.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/Sven-83/sunlit/main/admin/bk215.png",
+    "readme": "https://github.com/Sven-83/sunlit/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "energy",
+    "compact": true,
+    "materialize": true,
+    "connectionType": "local",
+    "dataSource": "push",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=5.0.19"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=6.13.16"
+      }
+    ],
+    "tier": 2,
+    "supportedMessages": {
+      "custom": false,
+      "deviceManager": false
+    },
+    "encryptedNative": [
+      "cloudApiToken"
+    ],
+    "protectedNative": [
+      "cloudApiToken"
+    ]
+  },
+  "native": {
+    "bk215Host": "192.168.178.24",
+    "bk215Port": 8000,
+    "bk215Serial": "dcbdccc00361",
+    "bk215ConnectTimeoutMs": 5000,
+    "bk215ResponseTimeoutMs": 2000,
+    "bk215IdleTimeoutMs": 60000,
+    "enableMdnsDiscovery": true,
+    "gridStatePath": "0_userdata.0.shelly3em.total_act_power",
+    "gridStaleTimeoutS": 15,
+    "controllerEnabled": false,
+    "controllerIntervalMs": 4000,
+    "controllerKp": 0.7,
+    "controllerKi": 0.05,
+    "controllerDeadbandW": 30,
+    "controllerTargetGridW": 0,
+    "inverterMaxPowerW": 800,
+    "socMin": 20,
+    "socMax": 100,
+    "socSafetyBuffer": 3,
+    "enableApsInverter": true,
+    "apsInverterHost": "192.168.178.189",
+    "cloudApiToken": "",
+    "logLevel": "info"
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "Connection to BK215 established",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.lastSync",
+      "type": "state",
+      "common": {
+        "role": "value.time",
+        "name": "Last data sync from BK215",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.firmwareVersion",
+      "type": "state",
+      "common": {
+        "role": "info.firmware",
+        "name": "BK215 firmware version",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "battery",
+      "type": "channel",
+      "common": {
+        "name": "Battery storage"
+      },
+      "native": {}
+    },
+    {
+      "_id": "battery.soc",
+      "type": "state",
+      "common": {
+        "role": "value.battery",
+        "name": "Overall state of charge",
+        "type": "number",
+        "unit": "%",
+        "min": 0,
+        "max": 100,
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "battery.chargingPower",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Currently configured charging power on BK215",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "battery.chargingPowerSetpoint",
+      "type": "state",
+      "common": {
+        "role": "level.power",
+        "name": "Set charging power on BK215 (manual override)",
+        "type": "number",
+        "unit": "W",
+        "min": 0,
+        "max": 3600,
+        "read": true,
+        "write": true,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "battery.localMode",
+      "type": "state",
+      "common": {
+        "role": "indicator",
+        "name": "Local mode enabled on BK215",
+        "type": "boolean",
+        "read": true,
+        "write": true,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "battery.homeApplianceMode",
+      "type": "state",
+      "common": {
+        "role": "indicator",
+        "name": "Home appliance mode (zero feed-in mode) enabled",
+        "type": "boolean",
+        "read": true,
+        "write": true,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "battery.socMinLimit",
+      "type": "state",
+      "common": {
+        "role": "level",
+        "name": "Minimum discharge SoC (1-20%)",
+        "type": "number",
+        "unit": "%",
+        "min": 1,
+        "max": 20,
+        "read": true,
+        "write": true,
+        "def": 10
+      },
+      "native": {}
+    },
+    {
+      "_id": "battery.socMaxLimit",
+      "type": "state",
+      "common": {
+        "role": "level",
+        "name": "Maximum charge SoC (70-100%)",
+        "type": "number",
+        "unit": "%",
+        "min": 70,
+        "max": 100,
+        "read": true,
+        "write": true,
+        "def": 90
+      },
+      "native": {}
+    },
+    {
+      "_id": "grid",
+      "type": "channel",
+      "common": {
+        "name": "Grid measurements"
+      },
+      "native": {}
+    },
+    {
+      "_id": "grid.power",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Net grid power (mirrored from external meter)",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "grid.lastUpdate",
+      "type": "state",
+      "common": {
+        "role": "value.time",
+        "name": "Timestamp of last grid measurement",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "grid.stale",
+      "type": "state",
+      "common": {
+        "role": "indicator",
+        "name": "Grid measurement is stale (>timeout)",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "controller",
+      "type": "channel",
+      "common": {
+        "name": "Zero feed-in PI controller"
+      },
+      "native": {}
+    },
+    {
+      "_id": "controller.enabled",
+      "type": "state",
+      "common": {
+        "role": "switch",
+        "name": "Enable PI controller (zero feed-in)",
+        "type": "boolean",
+        "read": true,
+        "write": true,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "controller.error",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "PI error term (grid power vs target)",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "controller.integral",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "PI integral term (persisted across restarts)",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "controller.lastUpdate",
+      "type": "state",
+      "common": {
+        "role": "value.time",
+        "name": "Timestamp of last controller iteration",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "safety",
+      "type": "channel",
+      "common": {
+        "name": "Safety guard"
+      },
+      "native": {}
+    },
+    {
+      "_id": "safety.failSafeActive",
+      "type": "state",
+      "common": {
+        "role": "indicator.alarm",
+        "name": "Fail-safe mode active (output forced to 0W)",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "safety.lastReason",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "Reason of the last fail-safe trigger",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    }
+  ]
+}

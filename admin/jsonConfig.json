@@ -1,0 +1,372 @@
+{
+  "type": "tabs",
+  "i18n": true,
+  "items": {
+    "connectionTab": {
+      "type": "panel",
+      "label": "tab_connection",
+      "items": {
+        "_headerConnection": {
+          "type": "header",
+          "text": "header_connection",
+          "size": 4,
+          "newLine": true
+        },
+        "bk215Host": {
+          "type": "ip",
+          "label": "label_bk215Host",
+          "help": "help_bk215Host",
+          "newLine": true,
+          "sm": 12,
+          "md": 8,
+          "lg": 6
+        },
+        "bk215Port": {
+          "type": "number",
+          "label": "label_bk215Port",
+          "min": 1,
+          "max": 65535,
+          "step": 1,
+          "default": 8000,
+          "sm": 12,
+          "md": 4,
+          "lg": 3
+        },
+        "bk215Serial": {
+          "type": "text",
+          "label": "label_bk215Serial",
+          "help": "help_bk215Serial",
+          "newLine": true,
+          "sm": 12,
+          "md": 8,
+          "lg": 6
+        },
+        "_headerDiscovery": {
+          "type": "header",
+          "text": "header_discovery",
+          "size": 4,
+          "newLine": true
+        },
+        "enableMdnsDiscovery": {
+          "type": "checkbox",
+          "label": "label_enableMdnsDiscovery",
+          "help": "help_enableMdnsDiscovery",
+          "default": true,
+          "newLine": true,
+          "sm": 12
+        },
+        "_headerTimeouts": {
+          "type": "header",
+          "text": "header_timeouts",
+          "size": 4,
+          "newLine": true
+        },
+        "bk215ConnectTimeoutMs": {
+          "type": "number",
+          "label": "label_bk215ConnectTimeoutMs",
+          "min": 1000,
+          "max": 60000,
+          "step": 500,
+          "default": 5000,
+          "newLine": true,
+          "sm": 12,
+          "md": 4
+        },
+        "bk215ResponseTimeoutMs": {
+          "type": "number",
+          "label": "label_bk215ResponseTimeoutMs",
+          "min": 500,
+          "max": 30000,
+          "step": 500,
+          "default": 2000,
+          "sm": 12,
+          "md": 4
+        },
+        "bk215IdleTimeoutMs": {
+          "type": "number",
+          "label": "label_bk215IdleTimeoutMs",
+          "help": "help_bk215IdleTimeoutMs",
+          "min": 10000,
+          "max": 600000,
+          "step": 5000,
+          "default": 60000,
+          "sm": 12,
+          "md": 4
+        }
+      }
+    },
+
+    "gridTab": {
+      "type": "panel",
+      "label": "tab_grid",
+      "items": {
+        "_headerGrid": {
+          "type": "header",
+          "text": "header_grid",
+          "size": 4,
+          "newLine": true
+        },
+        "_gridIntro": {
+          "type": "staticText",
+          "text": "intro_grid",
+          "newLine": true,
+          "sm": 12
+        },
+        "gridStatePath": {
+          "type": "objectId",
+          "label": "label_gridStatePath",
+          "help": "help_gridStatePath",
+          "newLine": true,
+          "sm": 12,
+          "md": 10,
+          "lg": 8
+        },
+        "gridStaleTimeoutS": {
+          "type": "number",
+          "label": "label_gridStaleTimeoutS",
+          "help": "help_gridStaleTimeoutS",
+          "min": 5,
+          "max": 300,
+          "step": 1,
+          "default": 15,
+          "newLine": true,
+          "sm": 12,
+          "md": 4
+        }
+      }
+    },
+
+    "controllerTab": {
+      "type": "panel",
+      "label": "tab_controller",
+      "items": {
+        "_headerController": {
+          "type": "header",
+          "text": "header_controller",
+          "size": 4,
+          "newLine": true
+        },
+        "_controllerIntro": {
+          "type": "staticText",
+          "text": "intro_controller",
+          "newLine": true,
+          "sm": 12
+        },
+        "controllerEnabled": {
+          "type": "checkbox",
+          "label": "label_controllerEnabled",
+          "help": "help_controllerEnabled",
+          "default": false,
+          "newLine": true,
+          "sm": 12
+        },
+        "controllerTargetGridW": {
+          "type": "number",
+          "label": "label_controllerTargetGridW",
+          "help": "help_controllerTargetGridW",
+          "min": -2000,
+          "max": 2000,
+          "step": 1,
+          "default": 0,
+          "newLine": true,
+          "sm": 12,
+          "md": 4
+        },
+        "controllerIntervalMs": {
+          "type": "number",
+          "label": "label_controllerIntervalMs",
+          "help": "help_controllerIntervalMs",
+          "min": 1000,
+          "max": 30000,
+          "step": 500,
+          "default": 4000,
+          "sm": 12,
+          "md": 4
+        },
+        "controllerDeadbandW": {
+          "type": "number",
+          "label": "label_controllerDeadbandW",
+          "help": "help_controllerDeadbandW",
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "default": 30,
+          "sm": 12,
+          "md": 4
+        },
+        "_headerGains": {
+          "type": "header",
+          "text": "header_gains",
+          "size": 4,
+          "newLine": true
+        },
+        "controllerKp": {
+          "type": "number",
+          "label": "label_controllerKp",
+          "help": "help_controllerKp",
+          "min": 0.01,
+          "max": 5,
+          "step": 0.01,
+          "default": 0.7,
+          "newLine": true,
+          "sm": 12,
+          "md": 4
+        },
+        "controllerKi": {
+          "type": "number",
+          "label": "label_controllerKi",
+          "help": "help_controllerKi",
+          "min": 0,
+          "max": 1,
+          "step": 0.005,
+          "default": 0.05,
+          "sm": 12,
+          "md": 4
+        },
+        "inverterMaxPowerW": {
+          "type": "number",
+          "label": "label_inverterMaxPowerW",
+          "help": "help_inverterMaxPowerW",
+          "min": 100,
+          "max": 3600,
+          "step": 10,
+          "default": 800,
+          "newLine": true,
+          "sm": 12,
+          "md": 4
+        }
+      }
+    },
+
+    "safetyTab": {
+      "type": "panel",
+      "label": "tab_safety",
+      "items": {
+        "_headerSafety": {
+          "type": "header",
+          "text": "header_safety",
+          "size": 4,
+          "newLine": true
+        },
+        "_safetyIntro": {
+          "type": "staticText",
+          "text": "intro_safety",
+          "newLine": true,
+          "sm": 12
+        },
+        "socMin": {
+          "type": "number",
+          "label": "label_socMin",
+          "help": "help_socMin",
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "default": 10,
+          "newLine": true,
+          "sm": 12,
+          "md": 4
+        },
+        "socMax": {
+          "type": "number",
+          "label": "label_socMax",
+          "help": "help_socMax",
+          "min": 50,
+          "max": 100,
+          "step": 1,
+          "default": 90,
+          "sm": 12,
+          "md": 4
+        },
+        "socSafetyBuffer": {
+          "type": "number",
+          "label": "label_socSafetyBuffer",
+          "help": "help_socSafetyBuffer",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 3,
+          "sm": 12,
+          "md": 4
+        }
+      }
+    },
+
+    "advancedTab": {
+      "type": "panel",
+      "label": "tab_advanced",
+      "items": {
+        "_headerAps": {
+          "type": "header",
+          "text": "header_aps",
+          "size": 4,
+          "newLine": true
+        },
+        "_apsIntro": {
+          "type": "staticText",
+          "text": "intro_aps",
+          "newLine": true,
+          "sm": 12
+        },
+        "enableApsInverter": {
+          "type": "checkbox",
+          "label": "label_enableApsInverter",
+          "default": false,
+          "newLine": true,
+          "sm": 12
+        },
+        "apsInverterHost": {
+          "type": "ip",
+          "label": "label_apsInverterHost",
+          "hidden": "!data.enableApsInverter",
+          "newLine": true,
+          "sm": 12,
+          "md": 8,
+          "lg": 6
+        },
+        "_headerCloud": {
+          "type": "header",
+          "text": "header_cloud",
+          "size": 4,
+          "newLine": true
+        },
+        "_cloudIntro": {
+          "type": "staticText",
+          "text": "intro_cloud",
+          "newLine": true,
+          "sm": 12
+        },
+        "cloudApiToken": {
+          "type": "password",
+          "label": "label_cloudApiToken",
+          "help": "help_cloudApiToken",
+          "repeat": false,
+          "newLine": true,
+          "sm": 12,
+          "md": 8,
+          "lg": 6
+        },
+        "_headerLogging": {
+          "type": "header",
+          "text": "header_logging",
+          "size": 4,
+          "newLine": true
+        },
+        "logLevel": {
+          "type": "select",
+          "label": "label_logLevel",
+          "options": [
+            { "label": "log_silly", "value": "silly" },
+            { "label": "log_debug", "value": "debug" },
+            { "label": "log_info", "value": "info" },
+            { "label": "log_warn", "value": "warn" },
+            { "label": "log_error", "value": "error" }
+          ],
+          "default": "info",
+          "newLine": true,
+          "sm": 12,
+          "md": 4
+        }
+      }
+    }
+  }
+}
