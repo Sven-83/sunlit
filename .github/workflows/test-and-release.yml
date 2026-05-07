@@ -132,7 +132,7 @@ jobs:
 
       - name: Extract release notes
         id: extract_release
-        uses: ffurrer2/extract-release-notes@v2
+        uses: ffurrer2/extract-release-notes@v3
         with:
           changelog_file: CHANGELOG.md
 
